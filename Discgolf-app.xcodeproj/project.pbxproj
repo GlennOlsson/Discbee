@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		213756B822BA5B9600BB8D88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213756B722BA5B9600BB8D88 /* AppDelegate.swift */; };
-		213756BA22BA5B9600BB8D88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213756B922BA5B9600BB8D88 /* ViewController.swift */; };
 		213756BD22BA5B9600BB8D88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 213756BB22BA5B9600BB8D88 /* Main.storyboard */; };
 		213756BF22BA5B9700BB8D88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 213756BE22BA5B9700BB8D88 /* Assets.xcassets */; };
 		213756C222BA5B9700BB8D88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 213756C022BA5B9700BB8D88 /* LaunchScreen.storyboard */; };
+		21E4C5EF22BA643100821637 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E4C5EE22BA643100821637 /* MainViewController.swift */; };
+		21E4C5F122BA6FD000821637 /* NavbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E4C5F022BA6FD000821637 /* NavbarController.swift */; };
+		21E4C5F322BA748E00821637 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E4C5F222BA748E00821637 /* Backend.swift */; };
+		21E4C5F522BA74BD00821637 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E4C5F422BA74BD00821637 /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		213756B422BA5B9600BB8D88 /* Discgolf-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Discgolf-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		213756B722BA5B9600BB8D88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		213756B922BA5B9600BB8D88 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		213756BC22BA5B9600BB8D88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		213756BE22BA5B9700BB8D88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		213756C122BA5B9700BB8D88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		213756C322BA5B9700BB8D88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21E4C5EE22BA643100821637 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
+		21E4C5F022BA6FD000821637 /* NavbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavbarController.swift; sourceTree = "<group>"; };
+		21E4C5F222BA748E00821637 /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
+		21E4C5F422BA74BD00821637 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,9 +60,12 @@
 		213756B622BA5B9600BB8D88 /* Discgolf-app */ = {
 			isa = PBXGroup;
 			children = (
+				21E4C5F022BA6FD000821637 /* NavbarController.swift */,
 				213756B722BA5B9600BB8D88 /* AppDelegate.swift */,
-				213756B922BA5B9600BB8D88 /* ViewController.swift */,
 				213756BB22BA5B9600BB8D88 /* Main.storyboard */,
+				21E4C5EE22BA643100821637 /* MainViewController.swift */,
+				21E4C5F222BA748E00821637 /* Backend.swift */,
+				21E4C5F422BA74BD00821637 /* Models.swift */,
 				213756BE22BA5B9700BB8D88 /* Assets.xcassets */,
 				213756C022BA5B9700BB8D88 /* LaunchScreen.storyboard */,
 				213756C322BA5B9700BB8D88 /* Info.plist */,
@@ -135,8 +144,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				213756BA22BA5B9600BB8D88 /* ViewController.swift in Sources */,
+				21E4C5F322BA748E00821637 /* Backend.swift in Sources */,
+				21E4C5EF22BA643100821637 /* MainViewController.swift in Sources */,
 				213756B822BA5B9600BB8D88 /* AppDelegate.swift in Sources */,
+				21E4C5F122BA6FD000821637 /* NavbarController.swift in Sources */,
+				21E4C5F522BA74BD00821637 /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
