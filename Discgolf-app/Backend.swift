@@ -24,6 +24,8 @@ let Oscar = constantPlayers[3]
 let constantGames = [
     Game(location: "Kärsön", players: Glenn, Fredrik),
     Game(location: "Tyresö", players: Glenn, Fredrik),
+    Game(location: "Kärsön", players: Glenn, Fredrik),
+    Game(location: "Kärsön", players: Glenn, Fredrik, Oscar),
 ]
 
 let constantDepts = [
@@ -43,6 +45,20 @@ func mimicEvents(){
     constantGames[1].addEvent(player: Fredrik, action: 1)
     constantGames[1].addEvent(player: Glenn, action: 0)
     constantGames[1].addEvent(player: Fredrik, action: 1)
+    constantGames[1].end()
+    
+    constantGames[2].addEvent(player: Glenn, action: 1)
+    constantGames[2].addEvent(player: Fredrik, action: 1)
+    constantGames[2].addEvent(player: Glenn, action: 0)
+    constantGames[2].addEvent(player: Fredrik, action: 1)
+    
+    constantGames[3].addEvent(player: Glenn, action: 1)
+    constantGames[3].addEvent(player: Fredrik, action: 1)
+    constantGames[3].addEvent(player: Oscar, action: 2)
+    constantGames[3].addEvent(player: Glenn, action: 1)
+    constantGames[3].addEvent(player: Fredrik, action: 1)
+    constantGames[3].addEvent(player: Oscar, action: 0)
+    constantGames[3].end()
 }
 
 func getRounds() -> [Game]{

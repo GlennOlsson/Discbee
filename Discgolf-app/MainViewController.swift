@@ -12,6 +12,8 @@ import UIKit
 class MainViewController: UITableViewController {
 	
     var rounds: [Game] = []
+	var finishedRounds: [Game] = []
+	var ongoingRounds: [Game] = []
  
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
@@ -26,13 +28,19 @@ class MainViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		print("Loaded")
-        rounds = getRounds()
 		
-		self.tableView.separatorColor = UIColor.black
-
+        refresh()
+		
+		self.tableView.backgroundColor = UIColor(red: 0.74, green: 0.87, blue: 0.91, alpha: 1)
 		
 		(self.navigationController?.navigationBar as? NavbarController)?.enableStatsButton(target: self, action: #selector(statsPressed(sender:)))
     }
+	
+	func refresh(){
+		rounds = getRounds()
+		finishedRounds = rounds.filter({(game: Game) -> Bool in !game.isLive})
+		ongoingRounds = rounds.filter({(game: Game) -> Bool in game.isLive})
+	}
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		print("NR of sections")
@@ -43,9 +51,9 @@ class MainViewController: UITableViewController {
 		print("Section: \(section)")
 		switch section {
 		case 0:
-			return rounds.filter({(game: Game) -> Bool in game.isLive}).count
+			return ongoingRounds.count
 		case 1:
-			return rounds.filter({(game: Game) -> Bool in !game.isLive}).count
+			return finishedRounds.count
 		default:
 			return 0
 		}
@@ -53,7 +61,8 @@ class MainViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "RoundCell", for: indexPath)
-		let round = rounds[indexPath.row]
+		
+		let round = indexPath.section == 0 ? ongoingRounds[indexPath.row] : finishedRounds[indexPath.row]
 		
 		let subViews = cell.contentView.subviews
 		var subLabels = subViews.map({(view: UIView) -> UILabel? in
@@ -74,11 +83,23 @@ class MainViewController: UITableViewController {
 		acView.frame.size = CGSize(width: 10, height: 20)
 		cell.accessoryView = acView
 		
+		cell.selectionStyle = .none
+		let selectedView = cell.selectedBackgroundView ?? UIView()
+		selectedView.backgroundColor = UIColor.red //UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.55)
+		cell.selectedBackgroundView = selectedView
+		
+		//Separator between cells
+		let separator = UIView()
+		separator.frame = CGRect(x: 0, y: cell.frame.height - 2, width: cell.frame.width, height: 5)
+		separator.backgroundColor = UIColor(red: 0.74, green: 0.87, blue: 0.91, alpha: 1)
+		cell.contentView.addSubview(separator)
+		
 		return cell
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let round = rounds[indexPath.row]
+		print(indexPath.row)
+		let round = indexPath.section == 0 ? ongoingRounds[indexPath.row] : finishedRounds[indexPath.row]
 		print(round.location)
 //		let cell = tableView.cellForRow(at: indexPath)
 //		cell?.contentView.subviews[0].layer.borderWidth = 2
