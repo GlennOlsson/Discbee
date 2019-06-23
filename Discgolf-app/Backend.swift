@@ -20,6 +20,19 @@ let constantGames = [
     Game(location: "Tyresö", players: constantPlayers[0], constantPlayers[1]),
 ]
 
+func mimicEvents(){
+    constantGames[0].addEvent(player: constantPlayers[0], action: 2)
+    constantGames[0].addEvent(player: constantPlayers[1], action: 1)
+    constantGames[0].addEvent(player: constantPlayers[0], action: -1)
+    constantGames[0].addEvent(player: constantPlayers[1], action: 3)
+    
+    constantGames[1].addEvent(player: constantPlayers[0], action: 3)
+    constantGames[1].addEvent(player: constantPlayers[1], action: 2)
+    constantGames[1].addEvent(player: constantPlayers[0], action: 1)
+    constantGames[1].addEvent(player: constantPlayers[1], action: 1)
+}
+
 func getRounds() -> [Game]{
+    mimicEvents()
     return constantGames
 }

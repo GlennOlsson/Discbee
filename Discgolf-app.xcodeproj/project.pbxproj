@@ -15,6 +15,7 @@
 		21E4C5F122BA6FD000821637 /* NavbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E4C5F022BA6FD000821637 /* NavbarController.swift */; };
 		21E4C5F322BA748E00821637 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E4C5F222BA748E00821637 /* Backend.swift */; };
 		21E4C5F522BA74BD00821637 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E4C5F422BA74BD00821637 /* Models.swift */; };
+		21E4C5F722BBA49800821637 /* RoundDetailedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E4C5F622BBA49800821637 /* RoundDetailedVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		21E4C5F022BA6FD000821637 /* NavbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavbarController.swift; sourceTree = "<group>"; };
 		21E4C5F222BA748E00821637 /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		21E4C5F422BA74BD00821637 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		21E4C5F622BBA49800821637 /* RoundDetailedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundDetailedVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				21E4C5F022BA6FD000821637 /* NavbarController.swift */,
 				213756B722BA5B9600BB8D88 /* AppDelegate.swift */,
 				213756BB22BA5B9600BB8D88 /* Main.storyboard */,
+				21E4C5F622BBA49800821637 /* RoundDetailedVC.swift */,
 				21E4C5EE22BA643100821637 /* MainViewController.swift */,
 				21E4C5F222BA748E00821637 /* Backend.swift */,
 				21E4C5F422BA74BD00821637 /* Models.swift */,
@@ -149,6 +152,7 @@
 				213756B822BA5B9600BB8D88 /* AppDelegate.swift in Sources */,
 				21E4C5F122BA6FD000821637 /* NavbarController.swift in Sources */,
 				21E4C5F522BA74BD00821637 /* Models.swift in Sources */,
+				21E4C5F722BBA49800821637 /* RoundDetailedVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
