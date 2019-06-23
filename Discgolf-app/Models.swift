@@ -82,3 +82,26 @@ class Player: Hashable {
         hasher.combine(id)
     }
 }
+
+class Dept {
+    
+    let deptor: Player
+    let collector: Player
+    var value: Int
+    let currency: String
+    
+    init(deptor: Player, collector: Player, value: Int, currency: String){
+        self.deptor = deptor
+        self.collector = collector
+        self.value = value
+        self.currency = currency
+    }
+    
+    func decrease(){
+        value -= 1
+    }
+    
+    func getText() -> String {
+        return "\(deptor) ows \(collector) \(value) \(currency.lowercased())"
+    }
+}

@@ -9,30 +9,6 @@
 import Foundation
 import UIKit
 
-//Copyright Ratul Sharker, https://stackoverflow.com/a/48781122/8138631
-extension UIImage {
-	func rotate(radians: CGFloat) -> UIImage {
-		let rotatedSize = CGRect(origin: .zero, size: size)
-			.applying(CGAffineTransform(rotationAngle: CGFloat(radians)))
-			.integral.size
-		UIGraphicsBeginImageContext(rotatedSize)
-		if let context = UIGraphicsGetCurrentContext() {
-			let origin = CGPoint(x: rotatedSize.width / 2.0,
-								 y: rotatedSize.height / 2.0)
-			context.translateBy(x: origin.x, y: origin.y)
-			context.rotate(by: radians)
-			draw(in: CGRect(x: -origin.y, y: -origin.x,
-							width: size.width, height: size.height))
-			let rotatedImage = UIGraphicsGetImageFromCurrentImageContext()
-			UIGraphicsEndImageContext()
-			
-			return rotatedImage ?? self
-		}
-		
-		return self
-	}
-}
-
 class MainViewController: UITableViewController {
 	
     var rounds: [Game] = []
@@ -44,6 +20,7 @@ class MainViewController: UITableViewController {
 	
 	@objc func statsPressed(sender: Any?){
 		print("Pressed stats")
+		performSegue(withIdentifier: "StatsSegue", sender: nil)
 	}
 	
     override func viewDidLoad() {
@@ -89,7 +66,7 @@ class MainViewController: UITableViewController {
 		var acImage = UIImage(named: "Accessory_Arrow")
 		acImage = acImage?.rotate(radians: .pi / 2)
 		acView.layer.contents = acImage?.cgImage
-		acView.frame.size = CGSize(width: 15, height: 20)
+		acView.frame.size = CGSize(width: 10, height: 20)
 		
 		cell.accessoryView = acView
 		
@@ -120,6 +97,11 @@ class MainViewController: UITableViewController {
 			roundDetailedVS.round = round
 			print("Set round")
 		}
+		
+		if let deptsVS = segue.destination as? DeptViewController{
+			deptsVS.depts = getDepts()
+			print("Set depts")
+		}
 	}
     
     
@@ -132,4 +114,28 @@ class MainViewController: UITableViewController {
 	}
 	*/
     
+}
+
+//Copyright Ratul Sharker, https://stackoverflow.com/a/48781122/8138631
+extension UIImage {
+	func rotate(radians: CGFloat) -> UIImage {
+		let rotatedSize = CGRect(origin: .zero, size: size)
+			.applying(CGAffineTransform(rotationAngle: CGFloat(radians)))
+			.integral.size
+		UIGraphicsBeginImageContext(rotatedSize)
+		if let context = UIGraphicsGetCurrentContext() {
+			let origin = CGPoint(x: rotatedSize.width / 2.0,
+								 y: rotatedSize.height / 2.0)
+			context.translateBy(x: origin.x, y: origin.y)
+			context.rotate(by: radians)
+			draw(in: CGRect(x: -origin.y, y: -origin.x,
+							width: size.width, height: size.height))
+			let rotatedImage = UIGraphicsGetImageFromCurrentImageContext()
+			UIGraphicsEndImageContext()
+			
+			return rotatedImage ?? self
+		}
+		
+		return self
+	}
 }
