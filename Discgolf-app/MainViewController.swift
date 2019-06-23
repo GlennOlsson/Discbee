@@ -28,27 +28,32 @@ class MainViewController: UITableViewController {
 		print("Loaded")
         rounds = getRounds()
 		
+		self.tableView.separatorColor = UIColor.black
+
 		
-		
-		let statsImage = UIImage(named: "Stats_button")
-		
-		let statsButton = UIBarButtonItem(image: statsImage, style: UIBarButtonItem.Style.plain, target: self, action: #selector(statsPressed(sender:)))
-		self.navigationController?.navigationBar.topItem?.rightBarButtonItem = statsButton
+		(self.navigationController?.navigationBar as? NavbarController)?.enableStatsButton(target: self, action: #selector(statsPressed(sender:)))
     }
 	
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return section == 0 ? rounds.count * 2 : 0
+	override func numberOfSections(in tableView: UITableView) -> Int {
+		print("NR of sections")
+		return 2
 	}
 	
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		print("Section: \(section)")
+		switch section {
+		case 0:
+			return rounds.filter({(game: Game) -> Bool in game.isLive}).count
+		case 1:
+			return rounds.filter({(game: Game) -> Bool in !game.isLive}).count
+		default:
+			return 0
+		}
+	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if indexPath.row % 2 == 1 {
-			let cell = tableView.dequeueReusableCell(withIdentifier: "SeparatorCell", for: indexPath)
-			return cell
-		}
-		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "RoundCell", for: indexPath)
-		let round = rounds[indexPath.row / 2]
+		let round = rounds[indexPath.row]
 		
 		let subViews = cell.contentView.subviews
 		var subLabels = subViews.map({(view: UIView) -> UILabel? in
@@ -67,25 +72,19 @@ class MainViewController: UITableViewController {
 		acImage = acImage?.rotate(radians: .pi / 2)
 		acView.layer.contents = acImage?.cgImage
 		acView.frame.size = CGSize(width: 10, height: 20)
-		
 		cell.accessoryView = acView
 		
 		return cell
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		guard indexPath.row % 2 == 0 else {
-			return
-		}
-		
-		let round = rounds[indexPath.row / 2]
+		let round = rounds[indexPath.row]
 		print(round.location)
 //		let cell = tableView.cellForRow(at: indexPath)
 //		cell?.contentView.subviews[0].layer.borderWidth = 2
 ////		cell?.contentView.subviews[0].layer.borderColor = CGColor
 		performSegue(withIdentifier: "RoundDetailedSegue", sender: round)
 	}
-	
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if let roundDetailedVS = segue.destination as? RoundDetailedVC{
@@ -103,17 +102,10 @@ class MainViewController: UITableViewController {
 			print("Set depts")
 		}
 	}
-    
-    
-
-	/*
-	// Override to support conditional editing of the table view.
-	override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-	// Return false if you do not want the specified item to be editable.
-	return true
+	
+	override func tableView(_: UITableView, titleForHeaderInSection: Int) -> String? {
+		return titleForHeaderInSection == 0 ? "Active" : "Finished"
 	}
-	*/
-    
 }
 
 //Copyright Ratul Sharker, https://stackoverflow.com/a/48781122/8138631

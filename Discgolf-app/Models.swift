@@ -34,6 +34,7 @@ class Game {
     let time: Date
     let location: String
     var events: [Event]
+    var isLive: Bool
     
     init(location: String, players: Player...){
         score = [:]
@@ -43,6 +44,7 @@ class Game {
         time = Date()
         self.location = location
         self.events = []
+        isLive = true
     }
     
     func getTime() -> String{
@@ -54,7 +56,16 @@ class Game {
     func addEvent(player: Player, action: Int){
         events.append(Event(time: Date(), player: player, action: action))
     }
+    
+    func end(){
+        isLive = false
+    }
+    
+    func resume(){
+        isLive = true
+    }
 }
+
 
 class Player: Hashable {
     private var name: String

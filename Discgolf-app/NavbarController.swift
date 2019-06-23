@@ -19,6 +19,13 @@ class NavbarController: UINavigationBar {
         
     }
     
+    func enableStatsButton(target: Any?, action: Selector){
+        //The stats button
+        let statsImage = UIImage(named: "Stats_button")
+        let statsButton = UIBarButtonItem(image: statsImage, style: UIBarButtonItem.Style.plain, target: target, action: action)
+        self.topItem?.rightBarButtonItem = statsButton
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -29,4 +36,8 @@ class NavbarController: UINavigationBar {
         self.titleTextAttributes![NSAttributedString.Key.kern] = 5
     }
     
+    @objc func statsPressed(sender: Any?){
+        print("Pressed stats")
+//        performSegue(withIdentifier: "StatsSegue", sender: nil)
+    }
 }

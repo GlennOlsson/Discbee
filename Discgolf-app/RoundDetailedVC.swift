@@ -16,6 +16,11 @@ class RoundDetailedVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var EventTable: UITableView!
     @IBOutlet weak var ResumeButton: UIView!
     
+    @objc func statsPressed(sender: Any?){
+        print("Pressed stats")
+        performSegue(withIdentifier: "StatsSegue", sender: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = round.location
@@ -23,6 +28,7 @@ class RoundDetailedVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         EventTable.delegate = self
         EventTable.dataSource = self
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,15 +52,5 @@ class RoundDetailedVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return round.events.count > 0 ? round.events.count : 0 // your number of cells here
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView()
-        footerView.backgroundColor = UIColor.white
-        return footerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 1
     }
 }

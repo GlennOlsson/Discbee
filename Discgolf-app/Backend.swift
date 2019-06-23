@@ -28,7 +28,7 @@ let constantGames = [
 
 let constantDepts = [
     Dept(deptor: Fredrik, collector: Glenn, value: 1, currency: "beer"),
-    Dept(deptor: Glenn, collector: Linus, value: 1, currency: "appe"),
+    Dept(deptor: Glenn, collector: Linus, value: 3, currency: "appe"),
 ]
 
 func mimicEvents(){
@@ -40,6 +40,8 @@ func mimicEvents(){
     constantGames[1].addEvent(player: Glenn, action: 3)
     constantGames[1].addEvent(player: Fredrik, action: 2)
     constantGames[1].addEvent(player: Glenn, action: 1)
+    constantGames[1].addEvent(player: Fredrik, action: 1)
+    constantGames[1].addEvent(player: Glenn, action: 0)
     constantGames[1].addEvent(player: Fredrik, action: 1)
 }
 
