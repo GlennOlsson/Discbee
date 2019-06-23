@@ -28,27 +28,36 @@
                                             <constraint firstAttribute="height" constant="1" id="tmy-kj-9yI"/>
                                         </constraints>
                                     </view>
-                                    <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M2S-cj-7cC">
+                                    <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="M2S-cj-7cC">
                                         <rect key="frame" x="0.0" y="41" width="335" height="522"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="im1-M2-tXG">
+                                            <tableViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeptCell" id="im1-M2-tXG">
                                                 <rect key="frame" x="0.0" y="28" width="335" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="im1-M2-tXG" id="dwJ-xV-URz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azP-RY-hhx">
-                                                            <rect key="frame" x="15" y="12" width="36" height="20"/>
-                                                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUM-1o-Xro">
+                                                            <rect key="frame" x="0.0" y="13.5" width="32" height="17.5"/>
+                                                            <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yMn-7F-PIb">
+                                                            <rect key="frame" x="305" y="-7" width="30" height="58"/>
+                                                            <fontDescription key="fontDescription" name="GillSans-Light" family="Gill Sans" pointSize="40"/>
+                                                            <state key="normal" title="−">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </state>
+                                                        </button>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="azP-RY-hhx" firstAttribute="centerY" secondItem="dwJ-xV-URz" secondAttribute="centerY" id="3gW-KO-wIM"/>
-                                                        <constraint firstItem="azP-RY-hhx" firstAttribute="leading" secondItem="dwJ-xV-URz" secondAttribute="leadingMargin" id="Bse-mK-Dx7"/>
+                                                        <constraint firstAttribute="trailing" secondItem="yMn-7F-PIb" secondAttribute="trailing" id="EYG-mi-h2L"/>
+                                                        <constraint firstItem="KUM-1o-Xro" firstAttribute="leading" secondItem="dwJ-xV-URz" secondAttribute="leading" id="g9P-lM-8Da"/>
+                                                        <constraint firstItem="yMn-7F-PIb" firstAttribute="centerY" secondItem="dwJ-xV-URz" secondAttribute="centerY" id="j3F-0X-pgM"/>
+                                                        <constraint firstItem="KUM-1o-Xro" firstAttribute="centerY" secondItem="dwJ-xV-URz" secondAttribute="centerY" id="sb5-5G-0pU"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" red="0.73999999999999999" green="0.87" blue="0.91000000000000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -56,7 +65,7 @@
                                         </prototypes>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.15314640410958905" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="M2S-cj-7cC" firstAttribute="leading" secondItem="MJ8-ZX-jiF" secondAttribute="leading" id="4zN-w6-zRF"/>
                                     <constraint firstAttribute="trailing" secondItem="M2S-cj-7cC" secondAttribute="trailing" id="5BS-iQ-8eb"/>
@@ -77,6 +86,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1cY-Up-r5j"/>
                     </view>
+                    <connections>
+                        <outlet property="deptTableView" destination="M2S-cj-7cC" id="z7p-zB-8aC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B8J-3g-8js" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

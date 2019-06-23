@@ -48,5 +48,5 @@ func getRounds() -> [Game]{
     return constantGames
 }
 func getDepts() -> [Dept]{
-    return constantDepts
+    return constantDepts.filter({(dept: Dept) -> Bool in return dept.value > 0})
 }

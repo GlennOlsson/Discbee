@@ -102,6 +102,6 @@ class Dept {
     }
     
     func getText() -> String {
-        return "\(deptor) ows \(collector) \(value) \(currency.lowercased())"
+        return "\(deptor.getName()) ows \(collector.getName()) \(value) \(currency.lowercased())"
     }
 }

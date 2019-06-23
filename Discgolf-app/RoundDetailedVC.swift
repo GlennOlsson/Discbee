@@ -23,37 +23,6 @@ class RoundDetailedVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         
         EventTable.delegate = self
         EventTable.dataSource = self
-        
-//        for event in round.events {
-//            let subview = UIView()
-//            let timeLabel = UILabel()
-//            let nameLabel = UILabel()
-//            let actionLabel = UILabel(frame: CGRect(x:0,y: 0,width: 250,height: 50))
-//            actionLabel.textAlignment = .center
-//            actionLabel.textColor = .white
-//            actionLabel.font = UIFont(name: "Avenir-Light", size: 15.0)
-//
-////            subview.frame.size.height = 100
-////            subview.frame.size.width = 500
-//            subview.backgroundColor = UIColor.blue
-//
-//
-//            subview.addSubview(timeLabel)
-//            subview.addSubview(nameLabel)
-//            subview.addSubview(actionLabel)
-//
-//            timeLabel.text = event.getTime() + " :)"
-//
-//            nameLabel.text = event.player.getName()
-//
-//            actionLabel.text = String(event.action)
-//
-//            EventView.addSubview(subview)
-//
-//            print("Added \(event.player.getName()): \(event.action)")
-//            subview.setNeedsDisplay()
-//        }
-//        EventView.setNeedsDisplay()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
