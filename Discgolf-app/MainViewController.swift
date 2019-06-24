@@ -73,9 +73,7 @@ class MainViewController: UITableViewController {
 	
 	func setAddIsHidden(_ isHidden: Bool){
 		if let button = addButton {
-			let animation = UIViewPropertyAnimator(duration: 0.2, curve: .linear, animations: {
-				button.alpha = isHidden ? 0 : 1
-				
+			let animation = UIViewPropertyAnimator(duration: 0.2, curve: .linear, animations: {				
 				//Pan to left if going to hide, back to original if going to show
 				let window = UIApplication.shared.keyWindow!.frame
 				let frame = button.frame
