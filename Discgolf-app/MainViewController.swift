@@ -16,10 +16,7 @@ class MainViewController: UITableViewController {
 	var ongoingRounds: [Game] = []
 	
 	var addButton: UIButton?
-	
-	var hideAddAnimation: UIViewPropertyAnimator?
-	var showAddAnimation: UIViewPropertyAnimator?
-	
+
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
@@ -45,8 +42,6 @@ class MainViewController: UITableViewController {
 		let button = UIButton()
 		addButton = button
 		
-		setAddIsHidden(false)
-		
 		print(window.subviews)
 		
 		window.addSubview(button)
@@ -68,23 +63,6 @@ class MainViewController: UITableViewController {
 		
 		button.addTarget(self, action: #selector (addButtonPressed(sender:)), for: .touchUpInside)
 		
-		hideAddAnimation = UIViewPropertyAnimator(duration: 5, curve: .linear, animations: {() in
-			button.alpha -= 0.05
-			if button.alpha < 0 {
-				button.alpha = 0
-			}
-			print("hiding alpha: \(button.alpha)")
-		})
-		
-		showAddAnimation = UIViewPropertyAnimator(duration: 1, curve: .linear, animations: {() in
-			button.alpha += 0.05
-			if button.alpha > 1 {
-				button.alpha = 1
-			}
-			print("showing alpha: \(button.alpha)")
-		})
-		
-		
 		(self.navigationController?.navigationBar as? NavbarController)?.enableStatsButton(target: self, action: #selector(statsPressed(sender:)))
     }
 	
@@ -94,15 +72,21 @@ class MainViewController: UITableViewController {
 	}
 	
 	func setAddIsHidden(_ isHidden: Bool){
-		if let button = addButton, button.isHidden != isHidden {
-			button.alpha = isHidden ? 1 : 0 //if will hide, that is is showing now
-			if isHidden { //Will hide
-				showAddAnimation?.startAnimation()
-				button.isHidden = isHidden
-			} else {
-				button.isHidden = isHidden
-				hideAddAnimation?.startAnimation()
-			}
+		if let button = addButton {
+			let animation = UIViewPropertyAnimator(duration: 0.2, curve: .linear, animations: {
+				button.alpha = isHidden ? 0 : 1
+				
+				//Pan to left if going to hide, back to original if going to show
+				let window = UIApplication.shared.keyWindow!.frame
+				let frame = button.frame
+				if !isHidden {
+					button.center = CGPoint(x: window.width - 50, y: window.height - 50)
+				}
+				else {
+					button.center.x = -frame.width
+				}
+			})
+			animation.startAnimation()
 		}
 	}
 	
@@ -153,7 +137,7 @@ class MainViewController: UITableViewController {
 		acView.frame.size = CGSize(width: 10, height: 20)
 		cell.accessoryView = acView
 		
-		//TODO: Fix selection to look good, like transparent or so. None atm
+		//TODO: Fix animation for add button to disapear
 //		cell.selectionStyle = .none
 		print("SelectedView: \(cell.selectedBackgroundView)")
 		let selectedView = UIView()
@@ -167,13 +151,21 @@ class MainViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		print(indexPath.row)
 		let round = indexPath.section == 0 ? ongoingRounds[indexPath.row] : finishedRounds[indexPath.row]
-		tableView.cellForRow(at: indexPath)?.setSelected(true, animated: true)
 		print(round.location)
 		performSegue(withIdentifier: "RoundDetailedSegue", sender: round)
+		tableView.cellForRow(at: indexPath)?.isSelected = false
 	}
 	
-	override func viewWillAppear(_ animated: Bool) {
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		print("Will app")
 		setAddIsHidden(false)
+	}
+	
+	override func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+		//Hide add button on right side so animation back is quicker and better looking
+		addButton?.center.x = UIApplication.shared.keyWindow!.frame.width + 50
 	}
 	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
