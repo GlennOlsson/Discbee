@@ -12,20 +12,28 @@ let constantPlayers = [
     Player(name: "Glenn"),
     Player(name: "Fredrik"),
     Player(name: "Linus"),
-    Player(name: "Oscar")
+    Player(name: "Oscar"),
+    Player(name: "1"),
+    Player(name: "2"),
+    Player(name: "3"),
+    Player(name: "4")
 ]
 
 let Glenn = constantPlayers[0]
 let Fredrik = constantPlayers[1]
 let Linus = constantPlayers[2]
 let Oscar = constantPlayers[3]
+let p1 = constantPlayers[4]
+let p2 = constantPlayers[5]
+let p3 = constantPlayers[6]
+let p4 = constantPlayers[7]
 
 
 let constantGames = [
     Game(location: "Kärsön", players: Glenn, Fredrik),
     Game(location: "Tyresö", players: Glenn, Fredrik),
     Game(location: "Kärsön", players: Glenn, Fredrik),
-    Game(location: "Kärsön", players: Glenn, Fredrik, Oscar),
+    Game(location: "Kärsön", players: Glenn, Fredrik, Oscar, Linus, p1, p2, p3, p4),
 ]
 
 let constantDepts = [

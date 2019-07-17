@@ -54,7 +54,12 @@ class Game {
     }
     
     func addEvent(player: Player, action: Int){
+        guard let currentScore = score[player] else {
+            print("NOT A PLAYER")
+            return
+        }
         events.append(Event(time: Date(), player: player, action: action))
+        score[player] = currentScore + action
     }
     
     func end(){

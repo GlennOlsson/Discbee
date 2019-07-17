@@ -68,7 +68,7 @@ class MainViewController: UITableViewController {
 	
 	@objc func addButtonPressed(sender: UIButton?) {
 		print("add pressed")
-		setAddIsHidden(true)
+//		setAddIsHidden(true)
 	}
 	
 	func setAddIsHidden(_ isHidden: Bool){
