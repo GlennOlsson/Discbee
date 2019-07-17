@@ -69,9 +69,12 @@ func mimicEvents(){
     constantGames[3].end()
 }
 
+func `init`(){
+	mimicEvents()
+}
+
 func getRounds() -> [Game]{
-    mimicEvents()
-    return constantGames
+	return constantGames
 }
 func getDepts() -> [Dept]{
     return constantDepts.filter({(dept: Dept) -> Bool in return dept.value > 0})

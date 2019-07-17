@@ -58,8 +58,22 @@ class RoundDetailedVC: UIViewController, UITableViewDelegate, UITableViewDataSou
 	
 	@objc func resumePressed(sender: Any?) {
 		print("Pressed resume")
+		
+		guard var vcs = self.navigationController?.viewControllers else {
+			print("NO VCs??")
+			return
+		}
+		
 		round.resume()
-		performSegue(withIdentifier: "ActiveGameSegue", sender: self)
+		
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let activeVC = storyboard.instantiateViewController(withIdentifier: "ActiveVC") as! ActiveRoundViewController
+		activeVC.round = round
+		
+		vcs.removeLast()
+		vcs.append(activeVC)
+		self.navigationController?.setViewControllers(vcs, animated: true)
+		
 	}
 	
 	func addResumeButton(){

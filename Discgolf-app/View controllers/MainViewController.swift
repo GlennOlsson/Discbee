@@ -27,9 +27,17 @@ class MainViewController: UITableViewController {
 		performSegue(withIdentifier: "StatsSegue", sender: nil)
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		refresh()
+		self.tableView.reloadData()
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		print("Loaded")
+		
+		mimicEvents()
 		
         refresh()
 		
@@ -79,9 +87,11 @@ class MainViewController: UITableViewController {
 				let frame = button.frame
 				if !isHidden {
 					button.center = CGPoint(x: window.width - 50, y: window.height - 50)
+					button.alpha = 1
 				}
 				else {
 					button.center.x = -frame.width
+					button.alpha = 0
 				}
 			})
 			animation.startAnimation()
@@ -148,9 +158,9 @@ class MainViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		print(indexPath.row)
-		let round = indexPath.section == 0 ? ongoingRounds[indexPath.row] : finishedRounds[indexPath.row]
-		print(round.location)
-		performSegue(withIdentifier: "RoundDetailedSegue", sender: round)
+		let segueInfo: (destination: String, sender: Game) = indexPath.section == 0 ? (destination: "ActiveRoundSegue", sender: ongoingRounds[indexPath.row]) : (destination: "RoundDetailedSegue", sender: finishedRounds[indexPath.row])
+		print(segueInfo.sender.location)
+		performSegue(withIdentifier: segueInfo.destination, sender: segueInfo.sender)
 		tableView.cellForRow(at: indexPath)?.isSelected = false
 	}
 	
@@ -178,9 +188,19 @@ class MainViewController: UITableViewController {
 			roundDetailedVS.round = round
 			print("Set round")
 		}
+			
+		else if let activeRoundVC = segue.destination as? ActiveRoundViewController{
+			guard let round = sender as? Game else {
+				print("No game!")
+				self.title = "ERROR"
+				return
+			}
+			activeRoundVC.round = round
+			print("Set round")
+		}
 		
-		else if let deptsVS = segue.destination as? DeptViewController{
-			deptsVS.depts = getDepts()
+		else if let deptsVC = segue.destination as? DeptViewController{
+			deptsVC.depts = getDepts()
 			print("Set depts")
 		}
 	}

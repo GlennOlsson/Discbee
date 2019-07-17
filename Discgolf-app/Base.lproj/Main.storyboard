@@ -151,6 +151,7 @@
                     <connections>
                         <segue destination="LiY-DC-uYP" kind="show" identifier="RoundDetailedSegue" id="bQd-av-5oU"/>
                         <segue destination="jdo-0j-8AY" kind="show" identifier="StatsSegue" id="o0z-F9-k3Y"/>
+                        <segue destination="Unh-ri-7Nu" kind="show" identifier="ActiveRoundSegue" id="Ahb-qs-tnj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ydO-fQ-lf0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -160,7 +161,7 @@
         <!--Round DetailedVC-->
         <scene sceneID="Cbh-Lb-pgO">
             <objects>
-                <viewController id="LiY-DC-uYP" customClass="RoundDetailedVC" customModule="Discgolf_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailedVC" id="LiY-DC-uYP" customClass="RoundDetailedVC" customModule="Discgolf_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x58-IC-2YD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -283,7 +284,7 @@
                         <outlet property="EventTable" destination="8Vg-tr-Hp8" id="TbW-aU-E92"/>
                         <outlet property="EventView" destination="FN2-wN-zNP" id="7N4-aW-kTh"/>
                         <segue destination="jdo-0j-8AY" kind="show" identifier="StatsSegue" id="HhE-1U-iTW"/>
-                        <segue destination="Unh-ri-7Nu" kind="show" identifier="ActiveGameSegue" id="s8f-gy-Ly8"/>
+                        <segue destination="Unh-ri-7Nu" kind="presentation" identifier="ActiveGameSegue" animates="NO" id="s8f-gy-Ly8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z33-Ih-sfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -293,7 +294,7 @@
         <!--Active Round View Controller-->
         <scene sceneID="DJk-km-LsV">
             <objects>
-                <viewController id="Unh-ri-7Nu" customClass="ActiveRoundViewController" customModule="Discgolf_app" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ActiveVC" id="Unh-ri-7Nu" customClass="ActiveRoundViewController" customModule="Discgolf_app" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="Ea0-fT-Xh4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -376,6 +377,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lBl-aT-9kH"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="contentView" destination="ma3-2R-2Ex" id="GQt-nc-q7E"/>
                         <outlet property="scoreView" destination="KsR-n8-9uB" id="qOH-F5-AxB"/>
@@ -411,6 +413,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="s8f-gy-Ly8"/>
         <segue reference="HhE-1U-iTW"/>
     </inferredMetricsTieBreakers>
 </document>

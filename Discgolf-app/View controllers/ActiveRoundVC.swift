@@ -49,7 +49,7 @@ class ActiveRoundViewController: UIViewController {
         }
         let player = scoreButton.player
         if tempScoreDiff[player] == nil {
-            tempScoreDiff[player] = 0
+            tempScoreDiff[player] = 1
         }
         else {
             tempScoreDiff[player]! += 1
@@ -64,7 +64,7 @@ class ActiveRoundViewController: UIViewController {
         }
         let player = scoreButton.player
         if tempScoreDiff[player] == nil {
-            tempScoreDiff[player] = 0
+            tempScoreDiff[player] = -1
         }
         else {
             tempScoreDiff[player]! -= 1
@@ -90,16 +90,30 @@ class ActiveRoundViewController: UIViewController {
 			print("Done but no diff registered")
 			return
 		}
-		round.score[player]! += currentDiff
+		round.addEvent(player: player, action: currentDiff)
 		tempScoreDiff[player] = 0
 		updateDiffLabel(label: button.diffLabel, val: 0)
 		print("New score by diff: \(currentDiff)")
 		(playerViews[player]?.subviews[1] as? UILabel)?.text = String(round.score[player]!) //Will be looong if wrapped in if statements
-		round.addEvent(player: player, action: currentDiff)
 	}
 	
 	@objc func finishPressed(sender: Any?){
 		print("Pressed finish")
+		guard var vcs = self.navigationController?.viewControllers else {
+			print("NO VCs??")
+			return
+		}
+		
+		round.end()
+		
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let detailedVC = storyboard.instantiateViewController(withIdentifier: "DetailedVC") as! RoundDetailedVC
+		detailedVC.round = round
+		
+		vcs.removeLast()
+		vcs.append(detailedVC)
+		self.navigationController?.setViewControllers(vcs, animated: true)
+		
 	}
     
     func addScoreboard(){
